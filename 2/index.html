@@ -11,10 +11,16 @@ Output:
 
 <script>
 
+    String.prototype.replaceAll = function(search, replacement) {
+        var target = this;
+        return target.split(search).join(replacement);
+    };
+
+
     change.addEventListener("input", function (e) {
 
         encoded_string = change.value.slice(change.value.indexOf("/#")+2);
-        document.getElementById("out").innerHTML = atob(atob(encoded_string)) + "<br><br>" + atob(atob(atob(encoded_string))) + "<br><br>" + atob(atob(atob(encoded_string))).replace("%2F", "/");
+        document.getElementById("out").innerHTML = atob(atob(encoded_string)) + "<br><br>" + atob(atob(atob(encoded_string))) + "<br><br>" + atob(atob(atob(encoded_string))).replaceAll("%2F", "/");
         
     });
     
